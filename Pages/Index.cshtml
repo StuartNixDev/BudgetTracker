@@ -1,0 +1,76 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+<body>
+<h1 class="display-4">Welcome To The Budget Dashboard</h1>
+<br />
+
+
+    Here you can keep track of your monthly outgoings!
+
+<br />
+<br />
+
+<div class="col-md-6">
+    <table class="table table-sm table-bordered table-light">
+        <thead>
+            <tr>
+                <th scope="col" colspan="2">Your Top three most expensive payments are</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var record in Model.sortedList.Take(3))
+                {
+                    <tr scope="row" class="table-warning">
+                        <td>@record.Name</td>
+                        <td>£@record.Cost</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+    <table class="table table-sm table-bordered table-light">
+        <thead>
+        </thead>
+        <tbody>
+            @{
+                <tr socpe="row" class="table-success">
+                    <td>Your Current Monthly Total is:</td>
+                    <td>£@Model.totalSpend</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+ 
+    <br />
+        <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+            </div>
+        </div>
+    </div>
+    <br />
+
+<h5 class="display-5">Useful News Feeds</h5><br />
+<br />
+   <div class="container">
+       <div class="row">
+           <div class="col-md-4">
+            <a class="twitter-timeline" href="https://twitter.com/MoneySavingExp?ref_src=twsrc%5Etfw" data-width="400" data-height="500">Tweets by MoneySavingExp</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+           </div>
+            <div class="col-md-4">
+                <a class="twitter-timeline" href="https://twitter.com/MoneyfactsGrp?ref_src=twsrc%5Etfw" data-width="400" data-height="500">Tweets by MoneyfactsGrp</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+           
+       </div>
+      
+   </div>
+</div>
+   
+</body>
+

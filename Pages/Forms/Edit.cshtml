@@ -1,0 +1,41 @@
+﻿@page "{id?}"
+@model BudgetTracker.Pages.Forms.EditModel
+@{
+}
+
+ <form method="post">
+@foreach (var item in Model.result)
+{  
+    <div class="form-group">
+        <label for ="ID">Debit ID</label>
+        <input type="text" class="form-control" id="displayID" aria-describedby="IDHelp" name="ID"value=@item.ID readonly>
+        <small id="displayID" class="form-text text-muted">Direct Debit ID.</small>
+    </div>
+    <div class="form-group">
+        <label for ="Name">Name</label>
+        <input type="text" class="form-control" id="displayName" name="Name"value='@item.Name'>
+    </div>
+    <div class="form-group">
+        <label for="Cost">Cost Per Month (£)</label>
+        <input type="text" class="form-control" id="displayCost" name="Cost"value=@item.Cost>
+    </div>
+    <div class="form-group">
+        <label for="PaymentDate">Payment Date</label>
+        <input type="text" class="form-control" id="displayDate" name="PaymentDate"value='@item.PaymentDate'>
+    </div>
+    <br />
+        <button type="submit" formmethod="post" class="btn btn-warning">Update</button>
+        <td><a href="/Forms/Delete/@item.ID" class="btn btn-danger">Delete</a></td>
+    }
+    
+</form>
+<br />
+<a href="/ViewDebits" class="btn btn-primary">Return to Debit View</a>
+
+  
+   
+
+
+
+
+
