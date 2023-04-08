@@ -43,29 +43,33 @@ namespace BudgetTracker.Pages
 
             }
         }
-       public void DeleteDebit(int id)
+        public void DeleteDebit(int id)
 
         {
             using IDbConnection connection = new SqlConnection(Helper.CnnVal("DebitDB"));
             {
-                var parameters = new { ID = id};
+                var parameters = new { ID = id };
                 var sql = "DELETE Debits WHERE ID = @ID";
                 _ = connection.Query<Debit>(sql, parameters);
 
             }
         }
 
-        public void AddDebit(int id, string name, double cost, string date)
+        public void AddDebit(string name, double cost, string date)
 
         {
-            using IDbConnection connection = new SqlConnection(Helper.CnnVal("DebitDB"));
-            {
-                var parameters = new { ID = id, NAME = name, COST = cost, DATE = date }; ;
-                var sql = "INSERT INTO Debits (ID, Name, Cost, PaymentDate) VALUES (@ID,@NAME,@COST,@DATE)";
-                _ = connection.Query<Debit>(sql, parameters);
-            }
+            
+                using IDbConnection connection = new SqlConnection(Helper.CnnVal("DebitDB"));
+                {
+                    var parameters = new { NAME = name, COST = cost, DATE = date }; ;
+                    var sql = "INSERT INTO Debits (Name, Cost, PaymentDate) VALUES (@NAME,@COST,@DATE)";
+                    _ = connection.Query<Debit>(sql, parameters);
+                }
+            
+
         }
-
-
     }
+
 }
+
+        

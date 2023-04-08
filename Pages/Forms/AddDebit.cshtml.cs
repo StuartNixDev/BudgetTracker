@@ -15,6 +15,7 @@ namespace BudgetTracker.Pages.Forms
         public string PaymentDate { get; set; }
 
         public double newCost;
+        public string errorMessage;
 
         public void OnGet()
         {
@@ -22,7 +23,7 @@ namespace BudgetTracker.Pages.Forms
         public RedirectToPageResult OnPost(DataAccess dataAccess)
         {
             newCost = Convert.ToDouble(Cost);
-            dataAccess.AddDebit(ID, Name, newCost, PaymentDate);
+            dataAccess.AddDebit(Name, newCost, PaymentDate);
             return new RedirectToPageResult("/ViewDebits");
         }
        
